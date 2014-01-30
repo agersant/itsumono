@@ -1,0 +1,13 @@
+{
+	"name": "itsumono-test",
+	"url": "http://github.com/agersant/itsumono",
+	"license": "MIT",
+	"tags": [],
+	"description": "Test suite for itsumono",
+	"version": "0.0.1",
+	"releasenote": "Unreleased",
+	"contributors": [ "agersant" ],
+	"dependencies": {
+		"itsumono": ""
+	}
+}
