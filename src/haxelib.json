@@ -1,0 +1,13 @@
+{
+	"name": "itsumono",
+	"url": "http://github.com/agersant/itsumono",
+	"license": "MIT",
+	"tags": ["game"],
+	"description": "Utilities for game development",
+	"version": "0.0.1",
+	"releasenote": "Unreleased",
+	"contributors": [ "agersant" ],
+	"dependencies": {
+		"msignal": "1.2.2"
+	}
+}
