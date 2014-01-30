@@ -8,6 +8,7 @@
 	"releasenote": "Unreleased",
 	"contributors": [ "agersant" ],
 	"dependencies": {
-		"itsumono": ""
+		"itsumono": "0.0.1",
+		"munit": "2.1.0",
 	}
 }
