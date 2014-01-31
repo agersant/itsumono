@@ -17,5 +17,5 @@ install:
   - haxelib dev itsumono ./src
 
 script:
-  - haxelib run munit test -browser Firefox -kill-browser -debug
-# - haxelib run munit test -browser Firefox -kill-browser
+  - haxelib run munit test -browser firefox -kill-browser -debug
+# - haxelib run munit test -browser firefox -kill-browser
