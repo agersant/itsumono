@@ -1,0 +1,17 @@
+language: c++
+
+before_install:
+  - sudo add-apt-repository ppa:eyecreate/haxe -y
+  - sudo apt-get update
+  
+install:
+  - sudo apt-get install haxe -y --force-yes
+  - mkdir ~/haxelib
+  - haxelib setup ~/haxelib
+  - haxelib install msignal
+  - haxelib install munit
+  - haxelib dev itsumono ./src
+
+script:
+  - haxelib run munit test -debug
+  - haxelib run munit test
