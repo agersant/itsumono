@@ -1,9 +1,6 @@
 language: c++
 
 before_install:
-  - export AUDIODEV=null
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - sudo add-apt-repository ppa:eyecreate/haxe -y
   - sudo apt-get update
   
@@ -17,9 +14,6 @@ install:
   - haxelib install munit
   - haxelib dev itsumono ./src
   
-before_script:
-  - mkdir ffox_profile
-  - echo "user_pref(\"dom.allow_scripts_to_close_windows\", true);" >> ffox_profile/prefs.js
-
 script:
-  - haxelib run munit test -browser "firefox -profile "ffox_profile"" -kill-browser -debug -js
+  - haxelib run munit test -neko -cpp -debug
+  - haxelib run munit test -neko -cpp
