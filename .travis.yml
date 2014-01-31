@@ -18,4 +18,6 @@ install:
 
 script:
   #- haxelib run munit test -browser firefox -kill-browser -debug
-  firefox http://www.example.com
+  cd ~/.mozilla/firefox/
+  ls -la
+  #firefox http://www.example.com
