@@ -7,17 +7,18 @@ before_install:
   - sudo apt-get update
   
 install:
-  #- sudo apt-get install g++-multilib -y --force-yes
-  #- sudo apt-get install haxe -y --force-yes
-  #- mkdir ~/haxelib
-  #- haxelib setup ~/haxelib
-  #- haxelib install hxcpp
-  #- haxelib install msignal
-  #- haxelib install munit
-  #- haxelib dev itsumono ./src
+  - sudo apt-get install g++-multilib -y --force-yes
+  - sudo apt-get install haxe -y --force-yes
+  - mkdir ~/haxelib
+  - haxelib setup ~/haxelib
+  - haxelib install hxcpp
+  - haxelib install msignal
+  - haxelib install munit
+  - haxelib dev itsumono ./src
+  
+before_script:
+  - mkdir ffox_profile
+  - echo "user_pref(\"dom.allow_scripts_to_close_windows\", true);" >> ffox_profile/prefs.js
 
 script:
-  #- haxelib run munit test -browser firefox -kill-browser -debug
-  cd ~/.mozilla/firefox/
-  ls -la
-  #firefox http://www.example.com
+  - haxelib run munit test -browser "firefox -profile "ffox_profile"" -kill-browser -debug
