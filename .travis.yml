@@ -21,4 +21,4 @@ before_script:
   - echo "user_pref(\"dom.allow_scripts_to_close_windows\", true);" >> ffox_profile/prefs.js
 
 script:
-  - haxelib run munit test -browser "firefox -profile "ffox_profile"" -kill-browser -debug
+  - haxelib run munit test -browser "firefox -profile "ffox_profile"" -kill-browser -debug -js
