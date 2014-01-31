@@ -7,14 +7,15 @@ before_install:
   - sudo apt-get update
   
 install:
-  - sudo apt-get install g++-multilib -y --force-yes
-  - sudo apt-get install haxe -y --force-yes
-  - mkdir ~/haxelib
-  - haxelib setup ~/haxelib
-  - haxelib install hxcpp
-  - haxelib install msignal
-  - haxelib install munit
-  - haxelib dev itsumono ./src
+  #- sudo apt-get install g++-multilib -y --force-yes
+  #- sudo apt-get install haxe -y --force-yes
+  #- mkdir ~/haxelib
+  #- haxelib setup ~/haxelib
+  #- haxelib install hxcpp
+  #- haxelib install msignal
+  #- haxelib install munit
+  #- haxelib dev itsumono ./src
 
 script:
-  - haxelib run munit test -browser firefox -kill-browser -debug
+  #- haxelib run munit test -browser firefox -kill-browser -debug
+  firefox http://www.example.com
