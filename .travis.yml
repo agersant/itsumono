@@ -8,6 +8,7 @@ install:
   - sudo apt-get install haxe -y --force-yes
   - mkdir ~/haxelib
   - haxelib setup ~/haxelib
+  - haxelib install hxcpp
   - haxelib install msignal
   - haxelib install munit
   - haxelib dev itsumono ./src
