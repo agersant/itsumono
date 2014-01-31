@@ -1,8 +1,7 @@
 language: c++
 
 before_install:
-  - xdg-mime default firefox.desktop x-scheme-handler/http
-  - xdg-mime default firefox.desktop x-scheme-handler/https
+  - xdg-mime default firefox.desktop text/html
   - sudo add-apt-repository ppa:eyecreate/haxe -y
   - sudo apt-get update
   
