@@ -1,4 +1,5 @@
 package itsumono.path;
+import itsumono.assertive.Assertive;
 import itsumono.ds.Pool.Pool;
 using Lambda;
 
@@ -9,9 +10,9 @@ using Lambda;
 
 class Pathfinder<T> {
 	
-	static inline var DEFAULT_ITERATIONS_LIMIT : Int = 500;
-	
+	public static var DEFAULT_ITERATIONS_LIMIT : Int = 500;
 	public var maxIterations : Int;
+	
 	var pathNodes : Pool<PathNode<T>>;
 	var heuristics : T->T->Int;
 	var exploreFrom : T->Iterable<Move<T>>;
@@ -43,6 +44,7 @@ class Pathfinder<T> {
 		var newCost : Float;
 
 		// A* search
+		Assertive.assert(maxIterations >= 0);
 		while (!openList.empty() && iterations <= maxIterations) {
 			
 			iterations++;
@@ -90,6 +92,7 @@ class Pathfinder<T> {
 		}
 		
 		// Format output
+		Assertive.assert(bestNode != null);
 		var output = { cost: bestNode.cost, finalDistanceToTarget: bestNode.distanceToEnd, path: new List() };
 		currentNode = bestNode;
 		while (currentNode != null) {
