@@ -12,20 +12,20 @@ typedef Pint = {
  
 class PathfinderTest {
 	
-	var heuristic1D: Int->Int->Int;
-	var heuristic2D: Pint->Pint->Int;
-	var explore1D: Int->List<Move<Int>>;
-	var explore2D: Pint->List<Move<Pint>>;
-	var map2DEmpty: Array<Array<Int>>;
-	var map2DUShape: Array<Array<Int>>;
-	var map2DSplit: Array<Array<Int>>;
+	var heuristic1D : Int->Int->Int;
+	var heuristic2D : Pint->Pint->Int;
+	var explore1D : Int->List<Move<Int>>;
+	var explore2D : Pint->List<Move<Pint>>;
+	var map2DEmpty : Array<Array<Int>>;
+	var map2DUShape : Array<Array<Int>>;
+	var map2DSplit : Array<Array<Int>>;
 
 	public function new() { }
 	
 	@Before
 	public function setup() : Void {
 		
-		heuristic1D = function(i: Int, j : Int) : Int {
+		heuristic1D = function(i : Int, j : Int) : Int {
 			return Math.round(Math.abs(i - j));
 		}
 		explore1D = function(i) : List<Move<Int>> {
@@ -35,7 +35,7 @@ class PathfinderTest {
 			return moves;
 		}
 		
-		heuristic2D = function(i: Pint, j : Pint) : Int {
+		heuristic2D = function(i : Pint, j : Pint) : Int {
 			return heuristic1D(i.x, j.x) + heuristic1D(i.y, j.y);
 		}
 		

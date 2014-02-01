@@ -19,7 +19,7 @@ class Pool<T> {
 		freeIndex = -1;
 	}
 	
-	public function get () : T {
+	public function get() : T {
 		Assertive.assert(freeIndex >= -1);
 		if (freeIndex < 0) return factory();
 		var output = freeObjects[freeIndex--];

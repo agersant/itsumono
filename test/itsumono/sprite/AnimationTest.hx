@@ -10,13 +10,13 @@ class AnimationTest {
 	public function new() { }
 	
 	@Test
-	public function calcTotalDuration () : Void {
+	public function calcTotalDuration() : Void {
 		var anim = new Animation(["0", "0", "0"], [50, 40, 100], true);
 		Assert.areEqual(anim.getDuration(), 190);
 	}
 	
 	@Test
-	public function nonLoopingAnimation () : Void {
+	public function nonLoopingAnimation() : Void {
 		var anim = new Animation(["0", "1", "2"], [50, 40, 100], false);
 		Assert.areEqual(anim.getFrameAt(0), "0");
 		Assert.areEqual(anim.getFrameAt(30), "0");
@@ -29,7 +29,7 @@ class AnimationTest {
 	}
 	
 	@Test
-	public function loopingAnimation () : Void {
+	public function loopingAnimation() : Void {
 		var anim = new Animation(["0", "1", "2"], [50, 40, 100], true);
 		Assert.areEqual(anim.getFrameAt(0), "0");
 		Assert.areEqual(anim.getFrameAt(30), "0");
