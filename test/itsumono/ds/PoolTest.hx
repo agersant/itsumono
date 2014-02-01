@@ -45,8 +45,8 @@ class PoolTest {
 		node1.value = 64;
 		pool.free(node1);
 		var node2 = pool.get();
-		Assert.areEqual(node1.value, 0);
-		Assert.areEqual(node2.value, 0);
+		Assert.areEqual(0, node1.value);
+		Assert.areEqual(0, node2.value);
 	}
 	
 }
