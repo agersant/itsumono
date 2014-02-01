@@ -3,6 +3,7 @@ import massive.munit.TestSuite;
 import ExampleTest;
 import itsumono.assertive.AssertiveTest;
 import itsumono.ds.PoolTest;
+import itsumono.path.PathfinderTest;
 import itsumono.sprite.AnimationTest;
 
 /**
@@ -20,6 +21,7 @@ class TestSuite extends massive.munit.TestSuite
 		add(ExampleTest);
 		add(itsumono.assertive.AssertiveTest);
 		add(itsumono.ds.PoolTest);
+		add(itsumono.path.PathfinderTest);
 		add(itsumono.sprite.AnimationTest);
 	}
 }
