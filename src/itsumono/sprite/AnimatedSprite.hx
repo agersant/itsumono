@@ -12,9 +12,9 @@ import msignal.Slot.Slot0;
 
 class AnimatedSprite extends Sprite  {
 
-	var animationEndSignal : Signal0;
-	var autoAnimSlot : Slot0;
+	public var animationEndSignal (default, null) : Signal0;
 	
+	var autoAnimSlot : Slot0;
 	var spritesheet : Spritesheet;
 	var animation : Animation;
 	var bitmap : Bitmap;
