@@ -39,7 +39,6 @@ class Pathfinder<T> {
 		newPathNode.cost = 0;
 		var openList : Array<PathNode<T>> = [newPathNode];
 		var closedList : List<PathNode<T>> = new List();
-		var distanceToEnd : Float;
 		var addToOpenList : Bool;
 		var newCost : Float;
 
