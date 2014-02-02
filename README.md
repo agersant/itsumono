@@ -24,16 +24,11 @@ If your project uses [OpenFL](https://github.com/openfl/openfl), add ```<haxelib
 
 #API Reference
 
-##Assertions
-####Code Sample
-Assertions are a tool that helps you make sure your code behave the way you want and enforce that your invariants are respected.
-```haxe
-Assertive.assert(1 + 1 == 2, "Unexpected addition result");
-```
-####Assertive class
-#####Assertive.assert (condition: Bool, ?message: String)
-* In release builds, this function will have no effect (it will not even generate any code).
-* In debug builds, it will have no effect unless *condition* evaluates to false. When that happens, an error message will be displayed (including the optional String passed as *message*) and an AssertionError object will be thrown.
+* [Animated Sprites](#animated-sprites)
+* [Assertions](#assertions)
+* [Flow Manager](#flow-manager)
+* [Object Pooling](#object-pooling)
+* [Pathfinding](#pathfinding)
 
 ##Animated Sprites
 ####Code Sample
@@ -81,6 +76,17 @@ The only argument of the Spritesheet constructor is a *bitmapData* from which fr
 #####animatedSprite.setAnimation()
 #####animatedSprite.animateSequence()
 #####animatedSprite.animateLoop()
+
+##Assertions
+####Code Sample
+Assertions are a tool that helps you make sure your code behave the way you want and enforce that your invariants are respected.
+```haxe
+Assertive.assert(1 + 1 == 2, "Unexpected addition result");
+```
+####Assertive class
+#####Assertive.assert (condition: Bool, ?message: String)
+* In release builds, this function will have no effect (it will not even generate any code).
+* In debug builds, it will have no effect unless *condition* evaluates to false. When that happens, an error message will be displayed (including the optional String passed as *message*) and an AssertionError object will be thrown.
 
 ##Flow Manager
 
