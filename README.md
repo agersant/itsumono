@@ -30,7 +30,8 @@ Assertions are a tool that helps you make sure your code behave the way you want
 ```haxe
 Assertive.assert(1 + 1 == 2, "Unexpected addition result");
 ```
-####Assertive.assert (condition: Bool, ?message: String)
+####Assertive class
+#####Assertive.assert (condition: Bool, ?message: String)
 * In release builds, this function will have no effect (it will not even generate any code).
 * In debug builds, it will have no effect unless *condition* evaluates to false. When that happens, an error message will be displayed (including the optional String passed as *message*) and an AssertionError object will be thrown.
 
@@ -58,13 +59,28 @@ var sprite = new AnimatedSprite(sheet, "stand");
 sprite.setAnimation("walk");
 addChild(sprite);
 ```
-####new Spritesheet()
-####spritesheet.registerFrame()
-####spritesheet.registerAnimation()
-####new AnimatedSprite()
-####animatedSprite.setAnimation()
-####animatedSprite.animateSequence()
-####animatedSprite.animateLoop()
+####Spritesheet class
+#####new Spritesheet (bitmapData: BitmapData)
+The only argument of the Spritesheet constructor is a *bitmapData* from which frames will be copied.
+
+#####spritesheet.registerFrame(key: String, x: Int, y: Int, w: Int, h: Int, ?fx: Int = 0, ?fy: Int = 0, ?fw  Int, ?fh: Int)
+* *key* is a unique identifier for the frame.
+* *x* and *y* are the position of the frame in the sheet bitmap.
+* *w* and *h* are the width and height of the frame in the sheet bitmap.
+* *fx* and *fy* are the number pixels that were taken off the top left corner of the frame on the x/y axis when it was packed into the sheet bitmap. These numbers default to 0 and are useful only if your spritesheet packing tool crops bitmaps to save space.
+* *fw* and *fh* are the width/height of the frame before it was packed into the sheet bitmap. These numbers default to 0 and are useful only if your spritesheet packing tool crops bitmaps to save space.
+
+#####spritesheet.registerAnimation(key: String, frameKeys: Array<String>, frameDurations: Array<String>, loop: Bool)
+* *key* is a unique identifier for the animation.
+* *frameKeys* is an array of frame keys (as used in calls to *registerFrame*) that compose the animation.
+* *frameDuration* is an array listing how long each frame of *frameKeys* should be displayed. This array must have the same number of elements as *frameKeys*.
+* *loop* is a boolean that determines whether the animation should repeat itself after playing.
+
+####AnimatedSprite class
+#####new AnimatedSprite()
+#####animatedSprite.setAnimation()
+#####animatedSprite.animateSequence()
+#####animatedSprite.animateLoop()
 
 ##Flow Manager
 
@@ -78,15 +94,16 @@ var pool = new Pool (   function() : MyClass { return new MyClass(); }
 var object = pool.get();    // Get a clean object from the pool
 pool.free(object);          // Return an object that is no longer needed to the pool
 ```
-####new Pool (factory: Void->T, ?resetFunction: T->Void)
+####Pool class
+#####new Pool (factory: Void->T, ?resetFunction: T->Void)
 The Pool constructor takes two arguments:
 * A *factory* function that the pool can use to build objects when you need them
 * An optional *resetFunction* that will be called on pool objects before they are re-used
 
-####pool.get()
+#####pool.get() : T
 Returns a new or cleaned up object from the pool.
 
-####pool.free (object: T)
+#####pool.free (object: T)
 Marks an object as available for reuse by the pool. You should not attempt to use *object* after calling this function.
 
 ##Pathfinding
