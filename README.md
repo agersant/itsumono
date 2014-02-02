@@ -82,9 +82,11 @@ pool.free(object);          // Return an object that is no longer needed to the 
 The Pool constructor takes two arguments:
 * A *factory* function that the pool can use to build objects when you need them
 * An optional *resetFunction* that will be called on pool objects before they are re-used
+
 ####pool.get()
 Returns a new or cleaned up object from the pool.
-####pool.free (object : T)
+
+####pool.free (object: T)
 Marks an object as available for reuse by the pool. You should not attempt to use *object* after calling this function.
 
 ##Pathfinding
