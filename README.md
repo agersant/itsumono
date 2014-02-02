@@ -58,12 +58,12 @@ addChild(sprite);
 #####new Spritesheet (bitmapData: BitmapData)
 The only argument of the Spritesheet constructor is a *bitmapData* from which frames will be copied.
 
-#####spritesheet.registerFrame(key: String, x: Int, y: Int, w: Int, h: Int, ?fx: Int = 0, ?fy: Int = 0, ?fw  Int, ?fh: Int)
+#####spritesheet.registerFrame(key: String, x: Int, y: Int, w: Int, h: Int, ?fx: Int = 0, ?fy: Int = 0, ?fw:  Int, ?fh: Int)
 * *key* is a unique identifier for the frame.
 * *x* and *y* are the position of the frame in the sheet bitmap.
 * *w* and *h* are the width and height of the frame in the sheet bitmap.
 * *fx* and *fy* are the number pixels that were taken off the top left corner of the frame on the x/y axis when it was packed into the sheet bitmap. These numbers default to 0 and are useful only if your spritesheet packing tool crops bitmaps to save space.
-* *fw* and *fh* are the width/height of the frame before it was packed into the sheet bitmap. These numbers default to 0 and are useful only if your spritesheet packing tool crops bitmaps to save space.
+* *fw* and *fh* are the width/height of the frame before it was packed into the sheet bitmap. These numbers default to the values of *w*/*h* and are useful only if your spritesheet packing tool crops bitmaps to save space.
 
 #####spritesheet.registerAnimation(key: String, frameKeys: Array<String>, frameDurations: Array<String>, loop: Bool)
 * *key* is a unique identifier for the animation.
