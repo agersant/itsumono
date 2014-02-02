@@ -7,14 +7,6 @@ This library is a collection of utilities for Haxe game development built with t
 * Highly-flexible, itsumono is designed to work with *your* data formats and *your* classes.
 * Loose coupling, itsumono does not have a main loop and the utilities are vastly independant from one another.
 
-#Features
-
-* Animated sprites
-* Pathfinding
-* Game flow manager
-* Object pooling
-* …more to come
-
 #Setup instructions
 Assuming you have installed Haxe and Haxelib is in your system's path, run
 
