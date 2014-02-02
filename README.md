@@ -65,7 +65,7 @@ The only argument of the Spritesheet constructor is a *bitmapData* from which fr
 * *fx* and *fy* are the number pixels that were taken off the top left corner of the frame on the x/y axis when it was packed into the sheet bitmap. These numbers default to 0 and are useful only if your spritesheet packing tool crops bitmaps to save space.
 * *fw* and *fh* are the width/height of the frame before it was packed into the sheet bitmap. These numbers default to the values of *w*/*h* and are useful only if your spritesheet packing tool crops bitmaps to save space.
 
-#####spritesheet.registerAnimation(key: String, frameKeys: Array<String>, frameDurations: Array<String>, loop: Bool)
+#####spritesheet.registerAnimation(key: String, frameKeys: Array\<String\>, frameDurations: Array\<String\>, loop: Bool)
 * *key* is a unique identifier for the animation.
 * *frameKeys* is an array of frame keys (as used in calls to *registerFrame*) that compose the animation.
 * *frameDuration* is an array listing how long each frame of *frameKeys* should be displayed. This array must have the same number of elements as *frameKeys*.
