@@ -50,7 +50,7 @@ class Pathfinder<T> {
 			currentNode = openList.shift();
 			closedList.push(currentNode);
 			
-			currentNode.distanceToEnd = heuristics(currentNode.node, target);
+			Assertive.assert(currentNode.distanceToEnd >= 0);
 			if (bestNode == null || bestNode.distanceToEnd > currentNode.distanceToEnd) {
 				bestNode = currentNode;
 				if (bestNode.distanceToEnd == 0)
@@ -59,6 +59,7 @@ class Pathfinder<T> {
 			
 			for (move in exploreFrom(currentNode.node)) {
 				
+				Assertive.assert(move.cost >= 0);
 				if (closedList.exists(function(n) { return heuristics(move.to, n.node) == 0; }))
 					continue;
 				
