@@ -9,7 +9,7 @@ This library is a collection of utilities for Haxe game development built with t
 
 #Features
 
-* Animated sprites rendering
+* Animated sprites
 * Pathfinding
 * Game flow manager
 * Object pooling
@@ -25,15 +25,17 @@ If your project uses [OpenFL](https://github.com/openfl/openfl), add ```<haxelib
 #API Reference
 
 ##Assertions
+####Code Sample
 Assertions are a tool that helps you make sure your code behave the way you want and enforce that your invariants are respected.
 ```haxe
 Assertive.assert(1 + 1 == 2, "Unexpected addition result");
 ```
+####Assertive.assert (condition: Bool, ?message: String)
 * In release builds, this function will have no effect (it will not even generate any code).
-* In debug builds, it will have no effect unless the first argument evaluates to false. When that happens, an error message will be displayed (including the optional String passed as second argument) and an AssertionError object will be thrown.
+* In debug builds, it will have no effect unless *condition* evaluates to false. When that happens, an error message will be displayed (including the optional String passed as *message*) and an AssertionError object will be thrown.
 
 ##Animated Sprites
-###Code Sample
+####Code Sample
 The itsumono sprites utility lets you load and animate virtually any spritesheet format into your game so it requires a few lines of setup:
 ```haxe
 var myBitmapData : BitmapData = /*This is your job*/;
@@ -56,19 +58,18 @@ var sprite = new AnimatedSprite(sheet, "stand");
 sprite.setAnimation("walk");
 addChild(sprite);
 ```
-###Spritesheet class breakdown
-####Constructor
-####registerFrame()
-####registerAnimation()
-###AnimateSprite class breakdown
-####Constructor
-####setAnimation()
-####animateSequence()
-####animateLoop()
+####new Spritesheet()
+####spritesheet.registerFrame()
+####spritesheet.registerAnimation()
+####new AnimatedSprite()
+####animatedSprite.setAnimation()
+####animatedSprite.animateSequence()
+####animatedSprite.animateLoop()
 
 ##Flow Manager
 
 ##Object Pooling
+####Code Sample
 This class can be used to manage a pool of reusable objects. This is especially useful when you need a large number of objects that have a short lifetime (such as when making a particle system).
 ```haxe
 var pool = new Pool (   function() : MyClass { return new MyClass(); }
@@ -77,8 +78,13 @@ var pool = new Pool (   function() : MyClass { return new MyClass(); }
 var object = pool.get();    // Get a clean object from the pool
 pool.free(object);          // Return an object that is no longer needed to the pool
 ```
+####new Pool (factory: Void->T, ?resetFunction: T->Void)
 The Pool constructor takes two arguments:
-* The first argument is a factory that your pool can use to build objects when you need them
-* The second argument is an optional cleanup function that will be called on pool objects before they are re-used
+* A *factory* function that the pool can use to build objects when you need them
+* An optional *resetFunction* that will be called on pool objects before they are re-used
+####pool.get()
+Returns a new or cleaned up object from the pool.
+####pool.free (object : T)
+Marks an object as available for reuse by the pool. You should not attempt to use *object* after calling this function.
 
 ##Pathfinding
