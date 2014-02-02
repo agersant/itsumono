@@ -41,7 +41,7 @@ sheet.registerAnimation("stand", ["stand_0"], [200], false);
 // Register an animation that loops between the "walk_0" and "walk_1" frame
 sheet.registerAnimation("walk", ["walk_0", "walk_1"], [200, 200], true);
 
-// Create an animated sprite using our sheet:
+// Create an animated sprite using the sheet
 var sprite = new AnimatedSprite(sheet, "stand");
 sprite.setAnimation("walk");
 addChild(sprite);
