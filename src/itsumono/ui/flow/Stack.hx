@@ -25,6 +25,7 @@ class Stack extends Sprite {
 		if (save == null) save = function(a) { return null; };
 		if (restore == null) restore = function(a, b) { };
 		var frameDefinition : FrameDefinition < T, U > = {
+			key: key,
 			constructor: constructor,
 			fullscreen: fullscreen,
 			save: save,
@@ -34,18 +35,13 @@ class Stack extends Sprite {
 	}
 	
 	public function open (key : String) : Void {
-		
 		Assertive.assert(frameDefinitions.exists(key));
 		var definition = frameDefinitions.get(key);
-		
-		// Close frame below
 		var oldTop = stack.first();
 		if (oldTop != null && definition.fullscreen) {
 			save(oldTop);
 			detach(oldTop);
 		}
-		
-		// Open new frame
 		var frameInstance = {
 			definition: definition,
 			sprite: null,
@@ -56,24 +52,29 @@ class Stack extends Sprite {
 	}
 	
 	public function closeTop() : Void {
-		
-		// Close top frame
 		Assertive.assert(!stack.empty());
 		var oldTop = stack.first();
 		pop(oldTop);
-		
-		// Restore frame below
-		var newTop = stack.first();
-		if (newTop != null && oldTop.definition.fullscreen) {
-			attach(newTop);			
-			restore(newTop);
-		}
-		
+		if (oldTop.definition.fullscreen)
+			restoreTop();
 	}
 	
 	public function closeAll() : Void {
 		while (!stack.empty())
 			pop(stack.first());
+	}
+	
+	public function closeAllAbove (key : String) : Void {
+		Assertive.assert(frameDefinitions.exists(key));
+		var closedFullscreen = false;
+		var frame = stack.first();
+		while (frame != null && frame.definition.key != key) {
+			pop(frame);
+			closedFullscreen = frame.definition.fullscreen;
+			frame = stack.first();
+		}
+		if (closedFullscreen)
+			restoreTop();
 	}
 	
 	function push<T : Sprite, U> (frame : FrameInstance<T, U >) : Void {
@@ -112,6 +113,13 @@ class Stack extends Sprite {
 		Assertive.assert(frame.sprite != null);
 		frame.definition.restore(frame.sprite, frame.savedState);
 		frame.savedState = null;
+	}
+	
+	function restoreTop<T: Sprite, U>() : Void {
+		if (stack.empty()) return;
+		var newTop = stack.first();
+		attach(newTop);
+		restore(newTop);
 	}
 	
 }

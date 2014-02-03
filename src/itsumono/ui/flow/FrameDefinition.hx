@@ -6,6 +6,7 @@ import flash.display.Sprite;
  */
 
 typedef FrameDefinition<T : Sprite, U> = {
+	var key : String;
 	var constructor : Void->T;
 	var fullscreen : Bool;
 	var save : T->U;
