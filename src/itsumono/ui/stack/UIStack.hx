@@ -37,10 +37,12 @@ class UIStack extends Sprite {
 	public function open (key : String) : Void {
 		Assertive.assert(frameDefinitions.exists(key));
 		var definition = frameDefinitions.get(key);
-		var oldTop = stack.first();
-		if (oldTop != null && definition.fullscreen) {
-			save(oldTop);
-			detach(oldTop);
+		if (definition.fullscreen) {
+			for (frame in stack) {
+				if (frame.sprite == null) break;
+				save(frame);
+				detach(frame);
+			}
 		}
 		var frameInstance = {
 			definition: definition,
@@ -48,7 +50,6 @@ class UIStack extends Sprite {
 			savedState: null,
 		}
 		push(frameInstance);
-		
 	}
 	
 	public function closeTop() : Void {
@@ -56,7 +57,7 @@ class UIStack extends Sprite {
 		var oldTop = stack.first();
 		pop(oldTop);
 		if (oldTop.definition.fullscreen)
-			restoreTop();
+			restoreTopFrames();
 	}
 	
 	public function closeAll() : Void {
@@ -74,7 +75,7 @@ class UIStack extends Sprite {
 			frame = stack.first();
 		}
 		if (closedFullscreen)
-			restoreTop();
+			restoreTopFrames();
 	}
 	
 	function push<T : Sprite, U> (frame : FrameInstance<T, U >) : Void {
@@ -115,11 +116,16 @@ class UIStack extends Sprite {
 		frame.savedState = null;
 	}
 	
-	function restoreTop<T: Sprite, U>() : Void {
-		if (stack.empty()) return;
-		var newTop = stack.first();
-		attach(newTop);
-		restore(newTop);
+	function restoreTopFrames<T: Sprite, U>() : Void {
+		var framesToRestore = new List();
+		for (frame in stack) {
+			framesToRestore.push(frame);
+			if (frame.definition.fullscreen) break;
+		}
+		for (frame in framesToRestore) {
+			attach(frame);
+			restore(frame);
+		}
 	}
 	
 }
