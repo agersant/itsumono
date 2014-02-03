@@ -1,9 +1,8 @@
 digraph gameflow {
-	rankdir=LR;
 	size="10"
-	graph [nodesep=1.4, pad=0.5];
-	edge [color="gray40",	fontname="Fira Sans OT Light Italic", fontcolor="#001226", fontsize="10"];
-	node [color="gray70",	fontname="Fira Sans OT Bold", 	fontcolor="#019FFF"];
+	graph [nodesep=.6, pad=0.5];
+	edge [color="gray60", style=solid, arrowsize=.75 ];
+	node [color="gray60", fontname="Fira Sans OT Bold", fontcolor="#019FFF"];
 	node [shape=rectangle] TITLE MENU OPTIONS GAME PAUSE;
 	
 	TITLE [label="Title Screen"];
@@ -12,15 +11,12 @@ digraph gameflow {
 	GAME [label="Game"];
 	PAUSE [label="Pause Menu"];
 	
-	TITLE -> MENU;
-	MENU -> TITLE;
-	MENU -> OPTIONS [constraint=false];
-	OPTIONS -> MENU [xlabel="while not ingame                             "];
+	TITLE -> MENU [dir=both];
+	MENU -> OPTIONS [constraint=false]
+	OPTIONS -> MENU [style=dotted, color="#EB0D3C"];
 	MENU -> GAME;
-	GAME -> MENU;
-	GAME -> PAUSE;
-	PAUSE -> GAME;
-	PAUSE -> TITLE;
+	GAME -> PAUSE [dir=both, constraint=false];
+	PAUSE -> TITLE [constraint=false];
 	PAUSE -> OPTIONS [constraint=false];
-	OPTIONS -> GAME [xlabel="while ingame"];
+	OPTIONS -> GAME [style=dotted, color="#EB0D3C"];
 }
