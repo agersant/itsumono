@@ -1,8 +1,7 @@
 digraph gameflow {
-	size="10"
 	graph [nodesep=.6, pad=0.5];
 	edge [color="gray60", style=solid, arrowsize=.75 ];
-	node [color="gray60", fontname="Fira Sans OT Bold", fontcolor="#019FFF"];
+	node [color="gray60", fontname="Fira Sans OT", fontcolor="#019FFF", fontsize=16];
 	node [shape=rectangle] TITLE MENU OPTIONS GAME PAUSE;
 	
 	TITLE [label="Title Screen"];
