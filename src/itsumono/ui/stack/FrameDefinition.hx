@@ -1,4 +1,4 @@
-package itsumono.ui.flow;
+package itsumono.ui.stack;
 import flash.display.Sprite;
 
 /**

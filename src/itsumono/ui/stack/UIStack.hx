@@ -1,4 +1,4 @@
-package itsumono.ui.flow;
+package itsumono.ui.stack;
 import flash.display.Sprite;
 import itsumono.assertive.Assertive;
 
@@ -8,7 +8,7 @@ using Lambda;
  * @author agersant
  */
 
-class Stack extends Sprite {
+class UIStack extends Sprite {
 
 	var frameDefinitions : Map <String, FrameDefinition<Dynamic, Dynamic>>;
 	var stack : List<FrameInstance<Dynamic, Dynamic>>;
