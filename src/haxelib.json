@@ -8,6 +8,6 @@
 	"releasenote": "Unreleased",
 	"contributors": [ "agersant" ],
 	"dependencies": {
-		"msignal": "1.2.2"
+		"msignal": ""
 	}
 }
