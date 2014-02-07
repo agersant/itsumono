@@ -40,7 +40,9 @@ class CLIAutoComplete extends Sprite {
 		textField.y = padding;
 		textField.antiAliasType = AntiAliasType.ADVANCED;
 		textField.defaultTextFormat = CLIInput.textFormat;
-		//textField.embedFonts = true;
+		#if !flash
+			textField.embedFonts = true;
+		#end
 		textField.autoSize = TextFieldAutoSize.LEFT;
 		addChild(textField);
 		
