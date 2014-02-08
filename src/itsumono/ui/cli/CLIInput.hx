@@ -20,7 +20,7 @@ import openfl.Assets;
 class CLIInput extends Sprite {
 	
 	public static var textFormat (default, null) : TextFormat;
-	static inline var padding : Int = 2;
+	static inline var textOffsetY : Int = 2;
 
 	var textField : TextField;
 	var background : Sprite;
@@ -44,14 +44,14 @@ class CLIInput extends Sprite {
 		textField.defaultTextFormat = textFormat;
 		textField.embedFonts = true;
 		textField.type = TextFieldType.INPUT;
-		textField.y = padding;
+		textField.y = textOffsetY;
 		textField.width = w;
 		textField.height = TextUtils.getLineHeight(textField);
 		textField.addEventListener(Event.CHANGE, function(e) { textChanged(); }, false, 0, false);
 		
 		background.addChild(textField);		
 		background.graphics.beginFill(Swatch.CLIInputBGColor);
-		background.graphics.drawRect(0, 0, w, TextUtils.getLineHeight(textField) + padding);
+		background.graphics.drawRect(0, 0, w, TextUtils.getLineHeight(textField) + textOffsetY);
 		background.graphics.endFill();
 		
 		autoComplete = new CLIAutoComplete(updateSignal);
