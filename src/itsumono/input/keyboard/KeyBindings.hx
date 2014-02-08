@@ -1,5 +1,6 @@
 package itsumono.input.keyboard;
 import flash.display.Sprite;
+import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.Lib;
 import itsumono.assertive.Assertive;
@@ -11,12 +12,14 @@ import itsumono.assertive.Assertive;
 class KeyBindings extends Sprite {
 
 	var bindingSets : Map<String, BindingSetDefinition>;
+	var listeningForEvents : Bool;
 	
 	public function new() {
 		super();
 		bindingSets = new Map();
-		Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler, false, 0, true);
-		Lib.current.stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler, false, 0, true);
+		listeningForEvents = false;
+		addEventListener(Event.ADDED_TO_STAGE, onAdded);
+		addEventListener(Event.REMOVED_FROM_STAGE, onRemoved);
 	}
 	
 	public function register (key : String, content : Iterable<Binding>) {
@@ -48,5 +51,20 @@ class KeyBindings extends Sprite {
 		keyHandler(event, true);
 	}
 	
+	function onAdded (event : Event) : Void {
+		if (!listeningForEvents) {
+			Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
+			Lib.current.stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
+			listeningForEvents = true;
+		}
+	}
+	
+	function onRemoved (event : Event) : Void {
+		if (listeningForEvents) {
+			Lib.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
+			Lib.current.stage.removeEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
+			listeningForEvents = false;
+		}
+	}
 	
 }
