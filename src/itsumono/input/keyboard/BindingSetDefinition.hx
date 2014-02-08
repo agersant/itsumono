@@ -24,6 +24,10 @@ class BindingSetDefinition {
 		locks = IMath.max(0, locks - 1);
 	}
 	
+	public function forceUnlock() : Void {
+		locks = 0;
+	}
+	
 	public function handleKeyboardEvent (event : KeyboardEvent, keyUp : Bool) {
 		if (locks > 0) return;
 		for (binding in bindings)

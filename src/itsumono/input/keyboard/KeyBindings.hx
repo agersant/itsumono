@@ -28,6 +28,21 @@ class KeyBindings extends Sprite {
 		bindingSets.set(key, definition);
 	}
 	
+	public function enableAll() : Void {
+		for (bindingSet in bindingSets)
+			bindingSet.unlock();
+	}
+
+	public function disableAll() : Void {
+		for (bindingSet in bindingSets)
+			bindingSet.lock();
+	}
+	
+	public function forceEnableAll() : Void {
+		for (bindingSet in bindingSets)
+			bindingSet.forceUnlock();
+	}
+	
 	public function enable (key : String) : Void {
 		Assertive.assert(bindingSets.exists(key));
 		bindingSets.get(key).unlock();
@@ -36,6 +51,11 @@ class KeyBindings extends Sprite {
 	public function disable (key : String) : Void {
 		Assertive.assert(bindingSets.exists(key));
 		bindingSets.get(key).lock();
+	}
+	
+	public function forceEnable (key : String) : Void {
+		Assertive.assert(bindingSets.exists(key));
+		bindingSets.get(key).forceUnlock();
 	}
 	
 	function keyHandler (event : KeyboardEvent, keyUp : Bool) : Void {
