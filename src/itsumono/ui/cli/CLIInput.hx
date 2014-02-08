@@ -7,6 +7,7 @@ import flash.text.TextField;
 import flash.text.TextFieldType;
 import flash.text.TextFormat;
 import flash.text.TextLineMetrics;
+import itsumono.internal.style.Fonts;
 import itsumono.internal.style.Swatch;
 import itsumono.internal.TextUtils;
 import msignal.Signal.Signal1;
@@ -41,9 +42,7 @@ class CLIInput extends Sprite {
 		#end
 		textField.antiAliasType = AntiAliasType.ADVANCED;
 		textField.defaultTextFormat = textFormat;
-		#if !flash
-			textField.embedFonts = true;
-		#end
+		textField.embedFonts = true;
 		textField.type = TextFieldType.INPUT;
 		textField.y = padding;
 		textField.width = w;
@@ -94,10 +93,7 @@ class CLIInput extends Sprite {
 	static function initTextFormat() : Void {
 		if (textFormat == null) {
 			textFormat = new TextFormat();
-			var font = Assets.getFont("itsumono/fonts/FiraSans-Regular.ttf").fontName;
-			#if !flash
-				textFormat.font = font;
-			#end
+			textFormat.font = Fonts.getMainFont();
 			textFormat.color = Swatch.CLIInputFGColor;
 			textFormat.rightMargin = 5;
 			textFormat.leftMargin = 5;
