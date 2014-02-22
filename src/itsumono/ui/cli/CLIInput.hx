@@ -51,7 +51,7 @@ class CLIInput extends Sprite {
 		
 		background.addChild(textField);		
 		background.graphics.beginFill(Swatch.CLIInputBGColor);
-		background.graphics.drawRect(0, 0, w, TextUtils.getLineHeight(textField) + textOffsetY);
+		background.graphics.drawRect(0, 0, w, textField.height + textOffsetY);
 		background.graphics.endFill();
 		
 		autoComplete = new CLIAutoComplete(updateSignal);
